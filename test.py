@@ -3,13 +3,9 @@ import logging
 import json
 from hypothesis import  settings
 import schemathesis
-from schemathesis import contrib, Case
-from schemathesis.contrib.openapi import fill_missing_examples
 from schemathesis.checks import response_schema_conformance,negative_data_rejection, not_a_server_error,response_headers_conformance, content_type_conformance
 import glamor as allure
 from pprint import pformat
-from schemathesis import GenerationConfig
-from hypothesis import strategies as st
 
 #schemathesis.experimental.STATEFUL_TEST_RUNNER.enable()
 
@@ -47,4 +43,4 @@ def test_delete_pet_petId(case):
             basic_output_schemathesis(case, response)
         with allure.step('Check Validate'):
             logger.info(f"CASE INFO: {case}")
-            case.validate_response(response, checks=(negative_data_rejection,))
+            case.validate_response(response)
