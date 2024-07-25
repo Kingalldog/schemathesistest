@@ -41,5 +41,5 @@ def test_delete_pet_petId(case):
         with allure.step('Call Method'):
             basic_output_schemathesis(case, response)
         with allure.step('Check Validate'):
-            logger.info(f"CASE INFO: {case}")
+            logging.info(f"CASE INFO: {case}")
             case.validate_response(response)
