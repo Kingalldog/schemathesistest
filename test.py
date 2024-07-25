@@ -3,7 +3,6 @@ import logging
 import json
 from hypothesis import  settings
 import schemathesis
-from schemathesis.checks import response_schema_conformance,negative_data_rejection, not_a_server_error,response_headers_conformance, content_type_conformance
 import glamor as allure
 from pprint import pformat
 
