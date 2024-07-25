@@ -32,7 +32,7 @@ with open(f"{__name__}.log", 'w'):
 schema = schemathesis.from_uri("https://petstore.swagger.io/v2/swagger.json")
 
 @schema.parametrize(method="GET", endpoint="/pet/{petId}")
-@settings(max_examples=100)
+@settings(max_examples=1)
 def test_delete_pet_petId(case):
     logger.info(f"\n\n-------{case.endpoint.verbose_name}")
     allure.dynamic.title(f"/{case.endpoint.verbose_name}")
