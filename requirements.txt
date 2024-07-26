@@ -1,5 +1,4 @@
 schemathesis
 pytest-glamor-allure
-allure
 hypothesis
 pytest
