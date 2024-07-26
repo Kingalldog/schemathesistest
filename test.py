@@ -35,6 +35,19 @@ schema = schemathesis.from_uri("https://petstore.swagger.io/v2/swagger.json")
 
 @schema.parametrize(method="GET", endpoint="/pet/{petId}")
 @settings(max_examples=100)
+def test_get_pet_petId(case):
+    logger.info(f"\n\n-------{case.endpoint.verbose_name}")
+    allure.dynamic.title(f"/{case.endpoint.verbose_name}")
+    response = case.call()
+    with allure.step(f'Call Test + status: {response.status_code}'):
+        with allure.step('Call Method'):
+            basic_output_schemathesis(case, response)
+        with allure.step('Check Validate'):
+            logging.info(f"CASE INFO: {case}")
+            case.validate_response(response)
+
+@schema.parametrize(method="DELETE", endpoint="/pet/{petId}")
+@settings(max_examples=100)
 def test_delete_pet_petId(case):
     logger.info(f"\n\n-------{case.endpoint.verbose_name}")
     allure.dynamic.title(f"/{case.endpoint.verbose_name}")
