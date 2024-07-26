@@ -5,7 +5,9 @@ from hypothesis import  settings
 import schemathesis
 import glamor as allure
 from pprint import pformat
+from schemathesis import contrib
 
+contrib.unique_data.install()
 #schemathesis.experimental.STATEFUL_TEST_RUNNER.enable()
 
 def basic_output_schemathesis(case, response):
